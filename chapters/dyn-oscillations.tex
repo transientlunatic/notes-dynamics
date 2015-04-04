@@ -1,0 +1,240 @@
+
+\section{The Double Pendulum}
+\label{sec:double-pendulum}
+
+Consider a double pendulum, consisting of two bobs, one hung below the
+other. Each has length $a$, and bobs of mass $m$, so the potential
+energy is
+\begin{equation}
+  \label{eq:36}
+  V = -mga \cos(\theta) - mga \qty( \cos(\theta) + \cos(\phi) )
+\end{equation}
+and the kinetic energy is
+\begin{equation}
+  \label{eq:36}
+  T = \half m a^2 \dot{\theta}^2 + \half ma^2 (\dot{\theta} + \dot{\phi})^2
+\end{equation}
+Then,
+\begin{align*}
+  L & = \half ma^2 \dot{\theta}^2 + \half ma^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi}) \\
+    &                          \qquad  + mga (2 \cos(\theta) + \cos(\phi) ) \\
+&\approx \half m a^2 \dot{\theta}^2 + \half m a^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi}) \\
+& \qquad - mga \qty(\theta^2 + \half \phi^2 )
+\end{align*}
+The equations of motion from the Lagrange equations are
+\begin{subequations}
+  \begin{align}
+    \label{eq:36}
+2 \ddot{\theta} + \ddot{\phi} + \frac{2g}{a} \theta & =0 \\
+\ddot{\theta} + \ddot{\phi} + \frac{g}{a} \phi &= 0
+  \end{align}
+\end{subequations}
+Each of these equations has a form comparable to that of a harmonic
+oscillator, $\ddot{x} + \omega^2 x = 0$; attempting a trial solution
+\[
+\begin{bmatrix}
+  \theta \\ \phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+  c_{\theta} e^{i \omega t} \\ c_{\phi} e^{i \omega t}
+\end{bmatrix}
+\]
+For $c_{\theta}$, $c_{\phi}$ complex constants, then
+\[ \ddot{\theta} = - \omega^2 \theta, \qquad \ddot{\phi} = - \omega^2 \phi \]
+So
+\begin{subequations}
+  \begin{align}
+\label{eq:39}
+    \qty( - 2 \omega^2 + \frac{2g}{a} ) c_{\theta} - \omega^2 c_{\phi} &= 0 \\
+\label{eq:38}
+- \omega^2 c_{\theta} + \qty( -\omega^2 + \frac{g}{a} ) c_{\phi} &= 0
+  \end{align}
+Which can be expressed in matrix notation
+\begin{equation}
+  \label{eq:37}
+  \begin{bmatrix}
+    2 \frac{g}{a} - 2 \omega^2 & - \omega^2 \\ - \omega^2 & \frac{g}{a} - \omega^2
+  \end{bmatrix}
+  \begin{bmatrix}
+    c_{\theta} \\ c_{\phi}
+  \end{bmatrix} = 0
+\end{equation}
+\end{subequations}
+This implies that the determinant of the matrix must be zero, so
+\begin{equation}
+  \label{eq:40}
+    \begin{vmatrix}
+    2 \frac{g}{a} - 2 \omega^2 & - \omega^2 \\ - \omega^2 & \frac{g}{a} - \omega^2
+  \end{vmatrix} = 2 \qty( \frac{g}{a} - \omega^2 )^2 - \omega^4 = 0
+\end{equation}
+This has two solutions,
+\begin{equation}
+  \label{eq:41}
+  \omega^2 = \frac{g}{a} ( 2 \pm \sqrt{2})
+\end{equation}
+which are the normal frequencies for the system, and the coordinates
+$c_i$ are the normal modes. To find these we substitute the normal
+frequencies into equation \eqref{eq:37},
+\begin{equation}
+  \label{eq:42}
+  \frac{g}{a}
+  \begin{bmatrix}
+    2-4-2 \sqrt{2} & -2-\sqrt{2} \\ -2 -\sqrt{2} & 1-2-\sqrt{2}
+  \end{bmatrix}
+  \begin{bmatrix}
+    c_{\theta} \\ c_{\phi} 
+  \end{bmatrix} = 0 
+\end{equation}
+These turn out to give two copies of the same equation relating the
+coefficients, so clearly only the relative relation of them is fixed,
+\begin{equation}
+  \label{eq:43}
+  \frac{c_{\theta}}{c_{\phi}} = - \frac{2 + \sqrt{2}}{2(1+\sqrt{2})} = - \frac{(2+\sqrt{2})(1-\sqrt{2})}{2(1+\sqrt{2})(1-\sqrt{2})} = -\frac{1}{\sqrt{2}}
+\end{equation}
+Thus 
+\begin{equation}
+  \label{eq:44}
+    \begin{bmatrix}
+    c_{\theta} \\ c_{\phi} 
+  \end{bmatrix} \propto
+  \begin{bmatrix}
+    -1 \\ \sqrt{2}
+  \end{bmatrix}
+\end{equation}
+and using the negative solution
+\begin{equation}
+  \label{eq:45}
+    \begin{bmatrix}
+    c_{\theta} \\ c_{\phi} 
+  \end{bmatrix} \propto
+  \begin{bmatrix}
+    1 \\ \sqrt{2}
+  \end{bmatrix}
+\end{equation}
+Giving a general solution
+\begin{equation}
+  \label{eq:45}
+  \begin{bmatrix} \theta \\ \phi \end{bmatrix}
+= \alpha_1 \begin{bmatrix}  -1 \\ \sqrt{2}  \end{bmatrix} e^{i \omega_1 t} + \alpha_2 \begin{bmatrix}  1 \\ \sqrt{2}  \end{bmatrix} e^{i \omega_2 t}
+\end{equation}
+This can be rewritten in matrix form too,
+\begin{equation}
+  \label{eq:46}
+    \begin{bmatrix} \theta \\ \phi \end{bmatrix} = 
+    \begin{bmatrix} - 1 & 1 \\ \sqrt{2} & \sqrt{2} \end{bmatrix}
+    \begin{bmatrix} \alpha_1 e^{i \omega_1 t} \\ \alpha_2 e^{i \omega_2 t}    \end{bmatrix}
+\end{equation}
+This can be inverted, giving
+\begin{equation}
+  \label{eq:47}
+    \begin{bmatrix} \alpha_1 e^{i \omega_1 t} \\ \alpha_2 e^{i \omega_2 t}    \end{bmatrix} =
+    \begin{bmatrix} - \half & \half \sqrt{2} \\ \half & \half \sqrt{2} \end{bmatrix}
+    \begin{bmatrix} \theta \\ \phi \end{bmatrix} =
+    \begin{bmatrix} \xi_1 \\ \xi_2 \end{bmatrix}
+\end{equation}
+For $\xi_i$ the \emph{normal coordinates} of the system, these cause
+the Lagrange equations to completely decouple.
+
+\section{General Theory of Small Oscillations}
+\label{sec:general-theory-small}
+
+Consider a system with time-independent constraints; this is in equilibrium if
+\[ \pdv{V}{q_i} = 0 \]
+Furthermore, a stable equilibrium has \[ \pdv[2]{V}{q_i}{q_j} > 0 \quad \forall i, j\]
+
+Denoting the equilibrium value of each coordinate $q^{*}_i$, we can
+introduce a small perturbation, $\eta_i$, such that
+\begin{equation}
+  \label{eq:48}
+  q_i = q^{*}_i + \eta_i
+\end{equation}
+Assuming small displacements we can use Taylor's theorem to expand the
+potential about $q_i = q_i^{*}$:
+\begin{equation}
+  \label{eq:49}
+  V = V^{*} + \sum \eta_i \pdv{V}{q_i} + \sum_{i,j} \half \qty( \pdv[2]{V}{q_i}{q_j} ) \eta_i \eta_j
+\end{equation}
+to the second-order.
+The potential thus has the form of the second derivative term,
+\begin{equation}
+  \label{eq:50}
+  V = \sum_{i,j} \half V_{,ij} \eta_i \eta_j
+\end{equation}
+Using the comma notation for derivatives. The matrix $\mat{V}$ has
+components $V_{,ij}$, and the set of displacements $\eta_i$ forms a
+vector $\vec{\eta}$, so
+\begin{equation}
+  \label{eq:51}
+  V = \half \trans{\eta} \mat{V} \eta
+\end{equation}
+Since $\mat{V}$ doesn't depend upon the coordinates, just the
+equilibrium values, it is constant. The kinetic energy has the form
+\begin{equation}
+  \label{eq:52}
+  T = \sum_{i,j} \half m_{ij} \dot{q}_i \dot{q}_j
+\end{equation}
+Expanding about the equilibrium we find
+\[ \dot{q}_i = \dot{\eta}_i \] and
+\[ m_{ij}(q_1, \dots, q_n) = m_{ij}(q_1^{*}, \dots, q_n^{{*}}) + \cdots \]
+Then
+\begin{equation}
+  \label{eq:53}
+  T = \sum_{i,j} \half T_{ij} \dot{\eta}_i \dot{\eta}_j
+\end{equation}
+having defined $T_{ij} = m_{ij}(q^*_1, \dots, q^{*}_n)$, which is a
+constant matrix, so we have
+\begin{equation}
+  \label{eq:54}
+  T = \half \trans{\dot{\eta}} \mat{T} \dot{\eta}
+\end{equation}
+and
+\begin{equation}
+  \label{eq:55}
+  L = T-V = \sum_{i,j} \half \qty[ T_{ij} \dot{\eta}_i \dot{\eta}_j - V_{ij} \eta_i \eta_j] = \half \trans{\dot{\eta}} \mat{T} \dot{\eta} - \half \trans{\eta} \mat{V} \eta
+\end{equation}
+The Lagrange equations have the form
+\[ \dv{t} \pdv{L}{\dot{\eta}_k} = \pdv{L}{\eta_k} \]
+Taking this in bits,
+\[ \pdv{L}{\dot{\eta}_k} = \half \sum_{i,j} T_{ij} \qty[ \pdv{\dot{\eta}_i}{\dot{\eta}_k} + \dot{\eta}_i \pdv{\dot{\eta}_j}{\dot{\eta}_k}] \]
+The generalised coordinates are independent, so
+\[ \pdv{\dot{\eta}_i}{\dot{\eta}_k} = \delta_{ik} \]
+Thus
+\begin{subequations}
+\begin{equation}
+  \label{eq:56}
+  \pdv{L}{\dot{\eta}_k} = \half \sum_{i,j} T_{ij} \qty[ \delta_{ik} \dot{\eta}_j + \dot{\eta}_i \delta_{jk}] = \sum_j T_{kj} \dot{\eta}_j
+\end{equation}
+Similarly,
+\begin{equation}
+  \label{eq:57}
+  \pdv{L}{\eta_k} = - \sum_j V_{,kj} \eta_j
+\end{equation}
+\end{subequations}
+This gives the Lagrange equations in the form
+\begin{equation}
+  \label{eq:58}
+  \sum_j (T_{ij} \ddot{\theta}_j + V_{,ij} \eta_j) = 0 \equiv \mat{T} \ddot{\vec{\eta}} + \mat{V} \vec{\eta}_j = \vec{0}
+\end{equation}
+As in the double pendulum case, we can find solutions of the form
+\[ \eta = \vec{c} e^{i \omega t} \]
+Then $\ddot{\eta} = - \omega^2 \eta$, and so
+\begin{equation}
+  \label{eq:59}
+  \qty( \mat{V} - \omega^2 \mat{T} ) \eta = \vec{0}
+\end{equation}
+To satisfy the equation we need
+\begin{equation}
+  \label{eq:60}
+  \abs{\mat{V}-\omega^2 \mat{T}} = 0
+\end{equation}
+which is a characteristic equation, and this can be approached as an
+eigenvalue equation, and once the normal frequencies are found we
+substitute them back in turn, and find the vectors $\vec{c}$ by
+solving \[ \mat{V} \vec{c} = \omega^2 \mat{T} \vec{c} \]
+for each $\omega^2$
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 

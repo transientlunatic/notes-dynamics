@@ -1,0 +1,207 @@
+
+\section{Inertial Reference Frames}
+\label{sec:inert-refer-fram}
+
+An inertial frame is a coordinate system which is moving with a
+constant velocity. The existence of inertial frames amounts to
+Newton's first law.
+
+Consider a frame $S(x,y,z)$ and another frame $S^\prime(x^{\prime},
+y^{\prime}, z^\prime)$ with velocity $v$ with respect to $S$ along the
+$+x$-direction.
+The two frames are related by the equations
+\begin{align}
+  x^{\prime} &= x - vt \\
+  y^{\prime} &= y \\
+  z^\prime &= z \\
+  t^{\prime} &= t
+\end{align}
+These are an example of a Galilean transformation. We could also have
+used rotations.
+
+Now, consider a particle with mass $m$. Observers in $S$ and
+$S^{\prime}$ see
+
+\begin{table}[H] \centering
+\begin{tabular}{lcc} 
+             & $S$                  & $s^{\prime}$               \\ \hline
+Position     & $\vec{x}$            & $\vec{x}'$         \\ 
+Velocity     & $\dv{\vec{x}}{t}$    & $\dv{\vec{x}'}{t}$ \\
+Acceleration & $\dv[2]{\vec{x}}{t}$ & $\dv[2]{\vec{x}'}{t}$
+\end{tabular}
+\end{table}
+
+But, from above, 
+
+\begin{equation}%[Addition of Velocities]
+ \dv{\vec{x}}{t} = 
+ \begin{pmatrix}
+   \dv{x}{t} \\ \dv{y}{t} \\ \dv{z}{t}
+ \end{pmatrix}
+=
+\begin{pmatrix}
+  \dv{x^{\prime}}{t} + v \\
+ \dv{y^{\prime}}{t} \\
+ \dv{z^{\prime}}{t}
+\end{pmatrix}
+\end{equation}
+
+Thus, for velocities we interpret this to mean that the velocity of a
+particle in another frame is equal to its velocity in its own frame
+added to the relative velocity of its frame to the observer's.
+
+Acceleration, on the other hand, is the same in both frames, and is a
+frame-independent quantity. The general expression of this idea this
+implies that the laws of physics are the same in all inertial frames;
+the principle of Galilean relativity.
+
+\section{Rotating Frames}
+\label{sec:rotating-frames}
+
+Consider a frame $S_1$ which is rotating with angular velocity,
+$\omega$, about its $z$-axis with respect to an inertial frame, $S_0$,
+such that the axes coincide when $t=0$. As such there will be an angle
+between the sympathetic axes of $\theta = \omega t$ at any given time.
+
+Now consider a vector $\vec{A}_1$ in $S_1$ which becomes 
+\newcommand{\mat}[1]{\mathsf{#1}}
+\[A_0 = \mat{R}(\omega t) \vec{A}_1 \] i.e. $\vec{A}$ as seen in $S_0$
+rotates about the $z$-axis, corresponding to the rotation of the $S_1$
+axes. The explicit form of $\mat{R}(\theta)$ is then
+\[ \mat{R} = 
+\begin{bmatrix}
+  \cos(\omega t) & - \sin(\omega t) & 0 \\
+\sin(\omega t)   & \cos(\omega t)   & 0 \\
+0              & 0              & 1
+\end{bmatrix}
+\]
+
+In general $A_1$ may vary with $t$, i.e. $A_1$ is not fixed in
+$S_1$. Its rate of change in $S_1$ is not simply given by $A_1$. This
+seems confusing at first but due to the fact that both the vector and
+the coordinate axes in $S_1$ are changing with time. For example, a
+fixed vector in $S_1$ has $\dot{A}_1=0$ but $\dot{A}_0 \neq 0$.
+
+The rate of change of the axes introduces an additional term to
+velocities in $S_0$; letting
+\begin{align*} 
+\dd{\vec{A}_0} &= \underbracket{\qty[ \dd{\mat{R}}(\omega t) ] \vec{A}_1}_{\text{From axis rotation.}} + \mat{R}(\omega t) \dd{\vec{A}_1} \\
+&= \vec{\omega} \cp \vec{A}_0 \dd{t} + \mat{R}(\omega t) \dd{A_1} \\
+&= \vec{\omega} \cp \qty[ \mat{R}(\omega t) \vec{A}_1] \dd{t} + \mat{R}(\omega t) \dd{A_1}
+\end{align*}
+Since
+\[ \qty| \dd{\mat{R}} \vec{A}_1| = \omega \dd{t} \qty|
+\vec{A}_0(\omega t) | = \qty| \omega \cp \vec{A}_0 | \dd{t} \] Where
+the second part follows from the change in $\vec{A}_0$ being
+perpendicular to $\vec{A}_0$ for the infinitessimal interval $\dd{t}$.
+The quantity $\vec{\omega} \cp \vec{A}_0$ points in the direction of
+$\dd{R} \vec{A}_1$, so given that the rotation is about the same axis
+as the finite rotation $\mat{R}(\omega t)$,
+\[ \omega \times \qty( \mat{R} \vec{A}_1) = \mat{R} \qty[ \vec{\omega}
+\cp \vec{A}_1] \] This implies that the order of rotations is
+irrelevant, so
+\begin{align}
+  \dd{\mat{R}} \vec{A}_1 &= \mat{R}(\omega t) \qty[ \vec{\omega} \cp \vec{A}_1] \dd{t} \nonumber \\
+\implies \dd{\vec{A}_0} &= \mat{R}(\omega t) \qty[ \dd{\vec{A}_1} + \vec{\omega} \cp \vec{A}_1] \dd{t} \nonumber \\
+\label{eq:2}
+\dot{\vec{A}}_0 &= \mat{R}( \omega t ) \qty[ \dot{\vec{A}}_1 + \vec{\omega} \cp \vec{A}_1 ]
+\end{align}
+
+\section{The Coriolis and Centrifugal Forces}
+\label{sec:cori-centr-forc}
+
+Let a particle have positions $\vec{x}_0$ and $\vec{x}_1$ in the
+frames $S_0$ and $S_1$ respectively, with $S_1$ rotating relative to
+$S_0$ according to the transformation $\mat{R}(\omega t)$, so
+\begin{align*}
+  \vec{x}_0 &= \mat{R}(\omega t) \vec{x}_1 \\
+&= \mat{R}(\omega t) \qty[ \dot{\vec{x}}_1 + \vec{\omega} \cp \vec{x}_1 ] &\omit\hfill \text{ (by eq. \eqref{eq:2})} \\
+\implies \vec{v}_0 &= \mat{R}(\omega t) \qty[ \vec{v}_1 + \vec{\omega} \cp \vec{x}_1 ]
+\end{align*}
+Letting $\vec{A}_0 = \vec{v}_0$, and $\vec{A}_1 = \vec{v}_1 + \vec{\omega} \cp \vec{x}_1$, then
+\begin{align*}
+  \dot{\vec{v}}_0 &= \mat{R}(\omega t) \qty[ \dot{\vec{v}}_1 + \vec{\omega} \cp \dot{\vec{x}} + \vec{\omega} \cp \qty( \vec{v}_1 + \vec{\omega} \cp \vec{x}_1 ) ] \\ 
+&= \mat{R}(\omega t) \qty[ \dot{\vec{v}}_1 + 2 \vec{\omega} \cp \vec{v}_1 + \vec{\omega} \cp ( \vec{\omega} \cp \vec{x}_1 )]
+\end{align*}
+Since $\vec{a}_i = \dot{\vec{v}}_i$ is the acceleration observed in
+the frame $S_i$, then
+\[ \vec{a}_1 = \mat{R}(-\omega t) \vec{a}_0 - 2 \vec{\omega} \cp
+\vec{v}_1 - \vec{\omega} \cp ( \vec{\omega} \cp \vec{x}_1 ) \] So the
+acceleration is not the same in each frame, and since in the
+individual frames Newton's laws are valid, we see two additional
+forces,
+\begin{subequations}
+\begin{align}
+  \label{eq:3}
+  \vec{f}~{cor} &= - 2 m \vec{\omega} \cp \vec{v}_1 \\
+\vec{f}~{cen} &= - m \vec{\omega} \cp \qty( \vec{\omega} \cp \vec{x}_1 )
+\end{align}
+\end{subequations}
+Respectively the Coriolis and Centrifugal forces.
+
+\section{Motion at the Earth's Surface}
+\label{sec:motion-at-earths}
+
+The coordinate system on the Earth's surface is defined using two
+coordinates, latitude, $\lambda$, and longitude, $\beta$. We also have
+a rotation vector, $\vec{\Omega}$. A point close to the surface is
+specified by three coordinates: altitude, latitude, and longitude, and
+its velocity has the vector 
+\[ \vec{v} = \qty( v~{long}, v~{lat}, v~{alt}) \]
+an object near the Earth's surface will experience a Coriolis force,
+\[ \vec{f}~{cor} = - 2m \vec{\Omega} \cp \vec{v} \]
+and we have
+\[ \vec{\Omega} = \qty( 0, \Omega \cos(\lambda), \Omega \sin(\lambda) ) \]
+Thus
+\begin{align} 
+\vec{f}~{cor} &= -2m  \qty( 0, \Omega \cos(\lambda), \Omega \sin(\lambda) ) \cp \qty( v~{long}, v~{lat}, v~{alt}) \nonumber\\
+&= - 2 m \Omega \begin{pmatrix} v~{alt} \cos(\lambda) - v~{lat} \sin(\lambda)\\ v~{long} \sin(\lambda) \\ - v~{long} \cos(\lambda)
+\end{pmatrix} \nonumber \\
+& \text{ if } v~{alt} = 0 \nonumber \\
+&= -2m \Omega
+\begin{pmatrix}
+  - v~{lat} \sin(\lambda) \\ v~{long} \sin(\lambda) \\ 0 
+\end{pmatrix} \nonumber \\
+&= - 2m \qty(0 , 0 , \Omega \sin(\lambda) ) \cp \qty( v~{long}, v~{lat}, 0) \nonumber \\
+\therefore \vec{f}~{cor} &= - 2 m \vec{\Omega}~{alt} \cp \vec{v}
+\end{align}
+
+\section{The Foucalt Pendulum}
+\label{sec:foucalt-pendulum}
+
+The plane of a pendulum's motion will rotate over time in a rotating
+reference frame. Let $S_1$ be the rotating reference frame of the
+Earth, and $S_2$ be a frame rotating with angular velocity $\omega_2
+\propto \Omega~{alt}$. The accelerations in the two frames satisfy 
+\begin{equation}
+  \label{eq:1}
+  \vec{a}_1 = \mat{R} \qty[ \vec{a}_2 + 2 \vec{\omega}_2 \cp \vec{v}_2 + \vec{\omega}_2 \cp ( \vec{\omega}_2 \cp \vec{x}_2 )]
+\end{equation}
+where $\vec{x}_i$, $\vec{v}_i$, and $\vec{a}_i$ are respectively the
+position, velocity, and accleration in the $i$th frame. Assuming both
+$\vec{\Omega}$ and $\vec{\omega}_2$ are small, then the centrifugal
+term can be neglected, and
+\[ \vec{a}_1 = \mat{R} \qty[ \vec{a}_2 + 2 \vec{\omega}_2 \cp \vec{v}_2 ] \]
+we know
+\[ \vec{a}_1 = \vec{g} - 2 \vec{\Omega}~{alt} \cp \vec{v}_2 \] For
+$\vec{g}$ the acceleration due to gravity, so, given that the pendulum
+undergoes horizontal motion, and we can neglect its vertical motion,
+ignoring quadratic terms,
+\[ \vec{v}_1 \approx \mat{R} \vec{v}_2 \]
+and so
+\[ \vec{g} - 2 \mat{R} \qty[ \vec{\Omega}~{alt} \cp \vec{v}_2 ] =
+\mat{R} \qty[ \vec{a}_2 + 2 \vec{\omega}_2 \cp \vec{v}_2 ] \]
+thus, multiplying both sides by $\mat{R}^{-1}$,
+\begin{equation}
+  \label{eq:4}
+  \vec{a}_2 = \mat{R}^{-1} \vec{g}
+\end{equation}
+and so the acceleration of the bob is simply the acceleration due to
+gravity transformed into a different frame, and in $S_2$ it appears as
+if only gravity acts, so this represents a frame which is rotating to
+counteract the rotation of the pendulum's plane, thus demonstrating
+that the plane is rotating.
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 

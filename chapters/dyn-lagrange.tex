@@ -1,0 +1,347 @@
+
+\section{Constraints}
+\label{sec:constraints}
+
+The motion of a particle may be restricted in an arbitrary way via
+contraints, for example, a pendulum attached to a string of length $L$
+has a contraint 
+\[ x^2 + y^2 = L^2 \] In general a contraint can be characterised as a
+force, in the case of the pendulum this is tension.
+
+A \textbf{holonomic} constraint has the form
+\[ g(\vec{x}_1, \vec{x}_2, \dots, \vec{x}_n, t) = 0 \] If the
+constraint has time-dependence it is \textbf{rheonomous}, otherwise it
+is \textbf{scleronomous}. Not every contraint is holonomic; the
+constraint that a particle may not enter a sphere is an inequality,
+and thus non-holonomic, for example.
+
+\section{Generalised Coordinates}
+\label{sec:gener-coord}
+
+Generalised coordinates are chosen to simplify the description of a
+system, and are linearly independent. These are a set of independent
+quantities $\set{q_i}$, such that
+\begin{equation}
+  \label{eq:11}
+  \vec{x}_i = \vec{x}_i(\set{q_i}, t) 
+\end{equation}
+
+The number of degrees of freedom, $f$, for a system is equal to the product
+of the system's dimensionality, $D$, and its number of particles, $N$,
+less the number of constraints, i.e.
+\[ f = DN - k \] and this results in a system requiring $f$
+generalised coordinates to fully characterise it.
+
+\section{Virtual Work $\star$}
+\label{sec:virtual-work}
+
+A virtual displacement of a system is a change in a system's
+configuration as a result of any arbitrary infinitessimal change of
+its coordinates, $\delta \vec{r}_i$.
+
+The virtual work of a force $\vec{F}_i$ is $\vec{F}_i \vdot \delta
+\vec{r}_i$. If the system is in equilibrium then $\vec{F}_i = 0$, so
+the virtual work also vanishes. For the whole system
+\[ \sum \vec{F}_i \vdot \delta \vec{r}_i = 0 \] We can express a force
+in the form $\vec{F}_i = \vec{F}_i^{\rm (a)} +\vec{f}_i$, the sum of
+an applied force and a constraint, so
+\begin{equation}
+  \label{eq:12}
+  \sum \vec{F}_i^{\rm (a)} \vdot \delta \vec{r}_i + \sum_i \vec{f}_i \vdot \delta \vec{r}_i =0
+\end{equation}
+If the constraint forces produce no net virtual work (excluding e.g. sliding friction),
+\begin{equation}
+  \label{eq:13}
+  \sum \vec{F}_i^{\rm (a)} \vdot \delta \vec{r}_i = 0
+\end{equation}
+Which is the principle of virtual work.
+
+Thanks to the constraints $\delta \vec{r}_i$ are not independent, so a
+form for the general motion of the system in general coordinates is
+required.
+
+\section{D'Alembert's Principle}
+\label{sec:dalemberts-principle}
+
+Take the equation of motion, 
+\[ \vec{F}_i = \dot{\vec{p}}_i \]
+which can be expressed 
+\[ \vec{F}_i - \dot{\vec{p}}_i = 0 \]
+Then
+\begin{subequations}
+\begin{align}
+  \label{eq:14}
+  \sum (\vec{F}_i - \dot{\vec{p}}_i) \vdot \delta \vec{r}_i &=0 \\
+\sum_i (\vec{F}_i^{\rm (a)} - \dot{\vec{p}}_i ) \vdot \delta \vec{r}_i + \sum \vec{f}_i \vdot \delta \vec{r}_i &= 0 \\
+\sum_i (\vec{F}_i^{\rm (a)} - \dot{\vec{p}}_i ) \vdot \delta \vec{r}_i &= 0
+\end{align}
+\end{subequations}
+which is \emph{D'Alembert's Principle}. To convert this to generalised
+coordinates we use a transformation
+\begin{equation}
+  \label{eq:15}
+  \delta \vec{r}_i = \sum_j \pdv{\vec{r}_i}{q_j} \delta q_j
+\end{equation}
+using the summation convention, and defining $\Lambda^j_i = \pdv{\vec{r}_i}{q_j}$,
+\[ \delta \vec{r}_i = \Lambda^j_i \delta q_j \]
+Then the virtual work becomes
+\begin{equation}
+  \label{eq:16}
+  \sum_i \vec{F}_i  \vdot \delta \vec{r}_i = \sum_{i,j} \vec{F}_i \vdot \Lambda^j_i \delta q_j = \sum_j Q_j \delta q_j
+\end{equation}
+with $Q_j$ the components of a virtual force,
+\[ Q_j = \sum_i \vec{F}_i \Lambda^i_j \]
+
+We also have the reversed effective force in equation \eqref{eq:14},
+\begin{equation}
+  \label{eq:17}
+  \sum \dot{\vec{p}}_i \vdot \delta \vec{r}_i = \sum m_i \ddot{\vec{r}}_i \vdot \delta \vec{r}_i = \sum_{i,j} m_i \ddot{\vec{r}}_i \Lambda^j_i \delta q_j 
+\end{equation}
+
+Then
+\begin{align*}
+  \sum m_i \ddot{\vec{r}}_i \vdot \Lambda_i^j &= \sum_i \qty[ \dv{t} \qty(m_i \dot{\vec{r}} \vdot \Lambda_i^j ) - m_i \dot{\vec{r}} \vdot \dv{t} \qty( \Lambda^j_i )  ] \\ 
+&= \sum_i \qty[ \dv{t} \qty( m_i \vec{v}_i \vdot \pdv{\vec{v}_i}{\dot{q}_j} ) - m_i \vec{v}_i \pdv{\vec{v}_i}{q_j}]
+\end{align*}
+Since 
+\begin{align*}
+  \dv{t} \pdv{\vec{r}_i}{q_j} &= \pdv{\vec{v}}{q_j} \\
+\pdv{\vec{v}_i}{\dot{{q}}_j} &= \pdv{\vec{r}_i}{q_j}
+\end{align*}
+Then equation \eqref{eq:17} can be expanded to
+\begin{align*} 
+  \sum_j & \bigg\{
+    \dv{t} \qty[ 
+      \pdv{\dot{q}_j} \qty( \sum_i \half m_i v_i^2) 
+    ]
+    \\ & \quad- \pdv{q_j} \qty( \sum_i \half m_i v_i^2 )
+    - Q_j
+  \bigg\} \delta q_j
+\end{align*}
+Then
+\begin{equation}
+  \label{eq:18}
+  \sum \qty{ \qty[
+    \dv{t} \qty( \pdv{T}{\dot{q}_j} ) - \pdv{T}{q_j}
+  ] - Q_j } \delta q_j = 0
+\end{equation}
+For $T$ the kinetic energy, and so,
+\begin{equation}
+  \label{eq:19}
+  \dv{t} \qty( \pdv{T}{\dot{q}_j} ) - \pdv{T}{q_j} = Q_j 
+\end{equation}
+When the forces are produced by a potential, $\vec{F}_i = - \nabla_i
+V$,
+\[ Q_j = - \sum_i \nabla_i V \vdot \pdv{\vec{r}_i}{q_j} = - \pdv{V}{q_i}\]
+so we now have
+\begin{equation}
+  \label{eq:20}
+  \dv{t} \qty( \pdv{T}{\dot{q}_j} ) - \pdv{(T-V)}{q_i} = 0
+\end{equation}
+and defining a function $L = T - V$, the \emph{Lagrangian}, and noting
+that $\pdv{V}{\dot{q}_j} = 0$, we get
+
+\begin{equation}
+  \label{eq:21}
+  \dv{t} \qty( \pdv{L}{\dot{q}_j} ) - \pdv{L}{q_j} = 0
+\end{equation}
+which are \emph{Lagrange's equations}.
+
+\section{Velocity-dependent Potentials $\star$}
+\label{sec:veloc-depend-potent}
+
+Suppose there is no potential $V$ to generate the generalised forces,
+but they can instead be found from a function $U(q_j, \dot{q_j})$ by
+\begin{equation}
+  \label{eq:22}
+  Q_j = - \pdv{U}{q_j} + \dv{t}\qty( \pdv{U}{\dot{q}_j} )
+\end{equation}
+The Lagrangian is now
+\[ L = T-U \] and $U$ is a ``generalised potential''. Such a potential
+is of importance in electromagnetism.
+
+\subsection{The Electromagnetic Vector Potential}
+\label{sec:electr-vect-potent}
+
+Consider the force on a charge,
+\begin{equation}
+  \label{eq:23}
+  \vec{F} = q \qty[ \vec{E} + \vec{v} \cp \vec{B}]
+\end{equation}
+for $\vec{E} = \vec{E}(x,y,z,t)$ and $\vec{B} = \vec{B}(x,y,z,t)$
+being continuous functions of time and position. These can be derived
+from a scalar potential and a vector potential, respectively
+$\phi(t,x,y,z)$ and $\vec{A}(t,x,y,z)$:
+\begin{subequations}
+\begin{align}
+\vec{E} & = - \nabla \phi - \pdv{\vec{A}}{t} \\ 
+\vec{B} & = \nabla \cp \vec{A}  
+\end{align}
+\end{subequations}
+The force can then be derived from the potential $U$,
+\begin{equation}
+  \label{eq:24}
+  U = q \phi - q \vec{A} \vdot \vec{v}
+\end{equation}
+and the Lagrangian is then
+\begin{equation}
+  \label{eq:25}
+  L = \half m v^2 - q \phi + q \vec{A} \vdot \vec{v}
+\end{equation}
+This can then be used to derive equation \eqref{eq:23}.
+
+\section{Dissipation $\star$}
+\label{sec:dissipation}
+
+If not all of the forces in a system can be derived from a potential
+then
+\begin{equation}
+  \label{eq:26}
+  \dv{t} \qty( \pdv{L}{\dot{q}_j} ) - \pdv{L}{q_j} = Q_j
+\end{equation}
+This happens in the case of friction, where there is a force 
+\[ F_{{\rm f}x} = - k_x v_x \]
+Such a force can be considered by the dissipation function,
+\begin{equation}
+  \label{eq:27}
+  \mathcal{F} = \half \sum_i \qty( k_x v_{ix}^2 + k_y v_{iy}^2 + k_z v_{iz}^2 )
+\end{equation}
+where 
+\[ \vec{F}_{{\rm f}x} = - \pdv{\mathcal{F}}{v_x} \implies \vec{F}~{f} = - \nabla_v \mathcal{F} \]
+The Lagrange equations then become
+\begin{equation}
+  \label{eq:28}
+  \dv{t} \pdv{L}{\dot{q}_j} - \pdv{L}{q_j} + \pdv{\mathcal{F}}{\dot{q}_j} = 0 
+\end{equation}
+
+\section{Hamilton's Principle}
+\label{sec:hamiltons-principle}
+
+It is possible to derive the Lagrange equations for a system from an
+integrated perspective of the motion, using Hamilton's Principle (the
+principle of least action):
+\begin{quotation}
+  The motion of a system from a time $t_1$ to $t_2$ is such that the line integral 
+  \[ I = \int_{t_1}^{t_2} L \dd{t} \] for $L = T - V$ has a stationary
+  value for the actual path of the motion.
+\end{quotation}
+
+We define the action as the integral from Hamilton's Principle,
+\begin{equation}
+  \label{eq:29}
+  S( \set{q_i}, \set{\dot{q}_i} ) = \int_{t_0}^{t_1} \dd{t} L(\set{q_i}, \set{\dot{q}_i}, t)
+\end{equation}
+
+To derive the Lagrange equations introduce a small perturbation to
+$q_i$,
+\[ q_i(t) \to q_i(t) + \delta q_i(t) \] The trajectory has fixed
+end-points, so $\delta q_i(t_0) = \delta q_i(t_1) = 0$, so
+\[  \dot{q}_i \to q_i + \delta \dot{q}_i, \quad \delta \dot{q}_i = \dv{t} \delta q_i \]
+
+This perturbs the action,
+\[ S \to S + \var{S} = \int_{t_0}^{t_1} \dd{t} L(q_i+\var{q_i}, \dot{q}_i + \var{\dot{q}_i}, t) \]
+Using Taylor's theorem,
+\begin{equation}
+  \label{eq:30}
+  S + \var{S} = \int_{t_0}^{t_1} \dd{t} \qty[ L + \sum_i \qty( \pdv{L}{q_i} \var{q_i} + \pdv{L}{\dot{q}_i} \var{\dot{q}_i} ) ] + \cdots
+\end{equation}
+Then
+\begin{align*}
+  \label{eq:31}
+  \var{S} &= \sum_i\int_{t_0}^{t_1} \dd{t} \qty[  \pdv{L}{q_i} \var{q_i} + \pdv{L}{\dot{q}_i} \var{\dot{q}_i}  ] \\
+&= \sum_i \qty{ \underbracket{\eval{ \pdv{L}{\dot{q}_i} \var{q_i} }_{t_0}^{t_1}}_{=0} + \underbracket{\int_{t_0}^{t_1} \dd{t} \qty[\pdv{L}{q_i} - \dv{t} \pdv{L}{\dot{q}_i} ] \delta q_i  }_{\text{Must be zero to extremise  action}} } \\
+\therefore \dv{t} \pdv{L}{\dot{q}_i}&= \pdv{L}{q_i}
+\end{align*}
+
+The variational approach to finding the Lagrangian allows easy
+extension to systems which are not normally the domain of dynamics,
+for example the descriptions of electrical circuits.
+
+\section{Canonical Momentum}
+\label{sec:canonical-momentum}
+
+Recall the Lagrangian for a particle moving in one dimension,
+\[ L = \half m \dot{x}^2 - V(x) \]
+from which
+\[ \pdv{L}{x} = m \dot{x} \] which is the particle's momentum. Given a
+general Lagrangian the quantity
+\begin{equation}
+  \label{eq:32}
+  p_i = \pdv{L}{\dot{q}_i}
+\end{equation}
+is the generalised momentum, or the canonically conjugate momentum to
+$q_i$.
+
+\section{Symmetries and Conservation}
+\label{sec:symm-cons-theor}
+
+If the Lagrangian of a system doesn't explicity contain a coordinate
+$q_i$, (but may contain $\dot{q}_j$) it is called cyclic, so
+\begin{equation}
+  \label{eq:33}
+  \pdv{L}{q_i} = 0 \implies \dv{t}\pdv{L}{\dot{q}_i} = \dot{p}_i = 0
+\end{equation}
+Therefore, the momentum conjugate to a cyclic coordinate is conserved.
+
+\section{The Energy Function}
+\label{sec:energy-function}
+
+Consider the time derivative of $L$,
+\begin{align*}
+  \label{eq:34}
+  \dv{L}{t} &= \sum_i \pdv{L}{q_i} \dv{q_i}{t} + \sum_i \pdv{L}{\dot{q}_i} \dv{\dot{q}_i}{t} + \pdv{L}{t} \\
+&= \sum_j \dv{t} \qty(\pdv{L}{\dot{q}_j}) \dot{q}_j + \sum_j \pdv{L}{\dot{q}_j} \dv{\dot{q}_j}{t} +\pdv{L}{t}
+\end{align*}
+Thus
+\begin{align*}
+\dv{t} \qty( \sum_j \dot{q}_j \pdv{L}{\dot{q}_j} - L ) + \pdv{L}{t} &= 0 \\
+\dv{H}{t} &= - \pdv{L}{t}
+\end{align*}
+For 
+\begin{equation}
+  \label{eq:35}
+  h = \sum_i \dot{q}_i \pdv{L}{\dot{q}_i} - L
+\end{equation}
+defined as the ``Energy function'', which is physically, if not mathematically, identical to the Hamiltonian.
+Thus
+\begin{equation}
+  \label{eq:92}
+  \dv{h}{t} = - \pdv{L}{t}
+\end{equation}
+If the Lagrangian is not explicitly a function of time then $h$ is
+conserved. This is one of the first integrals of the motion, and is 
+\emph{Jacobi's integral}.
+
+Under some circumstances $h$ is the total energy of a system; recall
+that the total kinetic energy of a system can be expressed
+\begin{equation}
+  \label{eq:93}
+  T = T_0 + T_1 + T_2
+\end{equation}
+with $T_0$ a function of only the generalised coordinates, $T_1(q,
+\dot{q})$ is linear in the generalised velocities, and $T_2(q,
+\dot{q})$ is quadratic in $\dot{q}$. For a wide range of systems we
+can similarly decompose the Lagrangian,
+\begin{equation}
+  \label{eq:94}
+  L = L_0 + L_1 + L_2
+\end{equation}
+If a function $f$ is homogeneous and of degree $n$ in the variables
+$x_i$, then
+$
+  \sum_i x_i \pdv*{f}{x_i} = nf
+$
+applied to the function $h$,
+\begin{equation}
+  \label{eq:96}
+  h = 2 L_2 + L_1 - L = L_2 - L_0
+\end{equation}
+If the transformations to generalised coordinates are time independent $T = T_2$, and then if the potential doesn't depend on generalised velocity, $L_0 = -V$, so
+\begin{equation}
+  \label{eq:97}
+  h = T + V = E
+\end{equation}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 

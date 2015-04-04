@@ -1,0 +1,124 @@
+In the Lagrangian formalism the equations of motion are given by
+\begin{equation}
+  \tag{\ref{eq:21}}
+  \dv{t}\qty(\pdv{L}{\dot{q}_i}) - \pdv{L}{q_i} = 0
+\end{equation}
+These are second-order differential equations, and so $2n$ initial
+values are required for a full solution, with an $n$-dimensional
+configuration space. The Hamiltonian approach is to recast the
+equations of motion as first-order equations, with a configuration
+space of $2n$ independent variables, describing the position of a
+point is spacetime, and the conjugate momenta. Now $(p, q)$ are the
+canonical variables.
+
+\section{The Legendre Transform}
+\label{sec:legendre-transform}
+
+In order to switch from the parameters of the Lagrangian formalism,
+$(q, \dot{q}, t)$ to those of the Hamiltonian, $(q, p, t)$ we
+introduce a transformation.
+
+Consider a function of the form
+\[ \dd{f} = u \dd{x} + v \dd{y}, \qquad u= \pdv{f}{x}, \quad
+v=\pdv{f}{y} \] We want to change from using $x$ and $y$ in the
+description to using $u$ and $y$, so let
+\[ g = f - ux \]
+which has a differential,
+\[ \dd{g} = \dd{f} - u \dd{x} - x \dd{u} = v \dd{y} - x \dd{u} \] Thus
+$x$ and $v$ are now functions of $u$ and $y$:
+\[ x = - \pdv{g}{u}, \qquad v = \pdv{g}{y} \]
+
+\begin{example}[Legendre transforms in thermodynamics]
+  Consider the first law of thermodynamics,
+  \[ \dd{U}= \dd{Q} - \dd{W} \] For a gas undergoing a reversible
+  process this can be re-expressed as
+  \[ \dd{U} = T \dd{S} - P \dd{V} \] For the entropy, $S$, and volume
+  $V$. The temperature and the pressure are given 
+  \[ T = \pdv{U}{S} \qquad P = - \pdv{U}{V} \] To find the enthalpy,
+  $H(S,P)$ we use a Legendre transform,
+  \[ H = U + PV \] which gives \[ \dd{H} = T \dd{S} + V \dd{P}\]
+  where \[ T = \pdv{H}{S}\ \qquad V = \pdv{H}{P} \]
+\end{example}
+
+\section{The Hamiltonian}
+\label{sec:hamiltonian}
+
+The Hamiltonian function is generated from the Lagrangian using a
+Legendre transform, starting with the differential of $L$,
+\begin{equation}
+  \label{eq:83}
+  \dd{L} = \pdv{L}{q_i} \dd{q_i} + \pdv{L}{\dot{q}_i} \dd{\dot{q}_i} + \pdv{L}{t} \dd{t}
+\end{equation}
+Recalling that $p_i = \pdv*{L}{q_i}$, then
+\begin{equation}
+  \label{eq:84}
+  \dd{L} = \dot{p}_i \dd{q}_i + p_i \dd{\dot{q}}_i + \pdv{L}{t} \dd{t}
+\end{equation}
+and we can transform to the Hamiltonian using
+\begin{subequations}
+\begin{equation}
+  \label{eq:85}
+  H(q, p, t) = \dot{q}_i p_i - L(q, \dot{q}, t)
+\end{equation}
+with differential
+\begin{equation}
+  \label{eq:86}
+  \dd{H}= \dot{q}_i \dd{p_i} - \dot{p}_i \dd{q}_i - \pdv{L}{t}
+\end{equation}
+and so
+\begin{equation}
+  \label{eq:88}
+  \dd{H} - \pdv{H}{q_i} \dd{q_i} + \pdv{H}{p_i} + \pdv{H}{t} \dd{t}
+\end{equation}
+\end{subequations}
+Thus we have $2n +1$ relations,
+\begin{subequations}
+  \begin{align}
+\label{eq:89}
+    \dot{q}_i    & = \pdv{H}{p_i} \\
+\label{eq:90}
+    - \dot{p}_i  & = \pdv{H}{q_i} \\
+\label{eq:91}
+    - \pdv{L}{t} & = \pdv{H}{t}
+  \end{align}
+\end{subequations}
+with equations (\ref{eq:89} -- \ref{eq:90}) the \emph{canonical
+  equations of Hamilton}, which are the $2n$ first-order equations
+which replace the $n$ second-order Lagrange equations.
+
+If the forces involved in the Lagrangian are the result of a
+conservative potential, and if the equations with generalised
+coordinates don't depend explicitly on time then the Hamiltonian is
+equal to the total energy.
+
+From the definition of $H$ in equation (\ref{eq:85}), and in the
+manner of equation (\ref{eq:94}),
+\begin{equation}
+  \label{eq:98}
+  H = \dot{q}_i p_i - [L_0(q_i, t) + L_1(q_i, t)\dot{q}_k + L_2(q_i, t) \dot{q}_k \dot{q}_m]
+\end{equation}
+If the equations defining the generalised coordinates do not
+explicitly depend on time, $L_2 \dot{q}_k \dot{q}_m = T$, and if the
+forces can be derived from a conservative potential, $L_0 = -V$, and thus 
+\begin{equation}
+  \label{eq:99}
+  H = T + V = E
+\end{equation}
+
+\section{Constructing the Hamiltonian}
+\label{sec:constr-hamilt}
+
+The procedure for constructing the Hamiltonian is
+\begin{enumerate}
+\item Construct $L$ in a given set of $q_i$,
+\item Define the $p_i$
+\item Form the Hamiltonian using equation (\ref{eq:85})
+\item Invert the conjugate momenta to gain the $\dot{q}_i$s
+\item These are used to eliminate all $\dot{q}_i$ from $H$
+\end{enumerate}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 
