@@ -231,8 +231,45 @@ To satisfy the equation we need
 which is a characteristic equation, and this can be approached as an
 eigenvalue equation, and once the normal frequencies are found we
 substitute them back in turn, and find the vectors $\vec{c}$ by
-solving \[ \mat{V} \vec{c} = \omega^2 \mat{T} \vec{c} \]
-for each $\omega^2$
+solving \[ \mat{V} \vec{c} = \omega^2 \mat{T} \vec{c} \] for each
+$\omega^2$. THis is akin to finding the eigenvectors of a matrix, and
+the vectors specify the \emph{normal modes} of the oscillation.
+
+In general, from the fact that $\mat{V}$ and $\mat{T}$ are symmetric,
+and that $\omega^2$ has real solutions, that $\vec{c}$ can be chosen
+to be orthonormal. The general solution takes the form
+\begin{equation}
+  \label{eq:80}
+  \begin{pmatrix}
+    \eta_1 \\ \vdots \\ \eta_n
+  \end{pmatrix}
+ = \sum_j \alpha_j \vec{c}^{(j)} \exp( i \omega_j t) = \sum_j \alpha_j 
+ \begin{pmatrix}
+   c_1^{(j)} \\ \vdots c_n^{(j)}
+ \end{pmatrix}
+\exp(i \omega_j t)
+\end{equation}
+which can be expressed more compactly, using Einstein notation,
+\begin{equation}
+\label{eq:81}
+ \eta_i = c_i^j \alpha_j \exp(i \omega_j t)
+\end{equation}
+for $c_i^j = c_i^{(j)}$. We can then define normal coordinates,
+\[ \xi_j = \alpha_j \exp(i \omega_j t) \] which correspond to the
+oscillation of the system at a single frequency, and can be found by
+inverting equation (\ref{eq:80}), so
+\begin{equation}
+  \label{eq:82}
+  \xi_j = (c_i^j)^{-1} \eta_i
+\end{equation}
+The Lagrangian then completely decouples into the sum of independent
+harmonic oscillators,
+\begin{equation}
+  \label{eq:87}
+  L = \sum_j C_j \qty[ \dot{\xi}_j^2 - \omega^2_j \xi_j^2]
+\end{equation}
+for $C_j$ a normalisation constant.
+
 
 %%% Local Variables: 
 %%% mode: latex
