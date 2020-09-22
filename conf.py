@@ -1,4 +1,4 @@
-import sphinx_daniel_theme
+import kentigern
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -52,8 +52,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 
-html_theme = 'daniel'
-html_theme_path = sphinx_daniel_theme.get_html_theme_path()
+html_theme = 'kentigern'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
