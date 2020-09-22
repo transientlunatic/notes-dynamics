@@ -34,8 +34,15 @@ release = 'v0.1'
 # ones.
 extensions = ['sphinx.ext.imgconverter',
               'sphinxcontrib.bibtex',
-              'sphinxcontrib.tikz',
-              'sphinxcontrib.thm']
+              #'sphinxcontrib.tikz',
+              #'sphinxcontrib.thm']
+              ]
+
+import sys, os
+sys.path.append(os.path.abspath("./_ext"))
+
+extensions += ['physics', 'recipe']
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
