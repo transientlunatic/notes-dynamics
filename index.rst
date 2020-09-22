@@ -8,14 +8,6 @@
    Many of them were taken at some speed, so please be cautious while using them.
    I'm working to revise them, but this is slow work, and taken-on mostly in spare time.
 
-..
-   The mathematics of gravity
-   --------------------------
-
-   .. toctree::
-      :maxdepth: 1
-      :caption: Mathematics for Mechanics
-
 
 
 Classical Mechanics
@@ -27,6 +19,8 @@ Classical Mechanics
    :maxdepth: 1
    :caption: Classical Mechanics
 
+   newtonian
+	     
    dyn-rotating
    dyn-system
    dyn-lagrange
@@ -44,5 +38,5 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
+* :ref:`physics-quantity`
 * :ref:`search`
