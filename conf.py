@@ -41,7 +41,7 @@ extensions = ['sphinx.ext.imgconverter',
 import sys, os
 sys.path.append(os.path.abspath("./_ext"))
 
-extensions += ['physics', 'recipe']
+extensions += ['physics']
 
 
 # Add any paths that contain templates here, relative to this directory.
