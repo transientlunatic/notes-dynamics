@@ -1,3 +1,7 @@
+************************
+The Lagrangian formalism
+************************
+
 Constraints
 ===========
 

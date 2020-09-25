@@ -1,3 +1,7 @@
+*************************************
+Rigid bodies and systems of particles
+*************************************
+
 Consider a set of particles which each has a mass :math:`m_i`, and
 position vector :math:`\vec{r}_i`, then each particle can experience two
 forces:

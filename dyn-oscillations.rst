@@ -1,3 +1,7 @@
+******************
+Oscillatory motion
+******************
+
 The Double Pendulum
 ===================
 

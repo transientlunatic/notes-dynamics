@@ -3,12 +3,35 @@ Newtonian Mechanics
 *******************
 
 .. math::
-   
+   \def\dd#1{\,\text{d}}
    \def\ddt#1{\frac{\text{d} #1}{\text{d}t}}
-   \def\dd#1#2{\frac{\text{d} #1}{\text{d} #2}}
-   \def\ddd#1#2#3{\frac{\text{d}^{#3} #1}{\text{d} #2^{#3}}}
+   \def\df#1{\frac{\text{d}}{\text{d} #1}}
+   \def\ddf#1#2{\frac{\text{d} #1}{\text{d} #2}}
+   \def\dddf#1#2#3{\frac{\text{d}^{#3} #1}{\text{d} #2^{#3}}}
+   \def\cp{\times}
 
-In the simplest form of classical mechanics we can consider point particles which have a :physics:ref:`Mass`, but no physical extent.
+Reference frames
+================
+
+In order to describe the mechanical behaviour of a system it is necessary to define a *reference frame* in which the behaviour, and the laws which govern it, are defined.
+
+In different reference frames the laws describing the system may look different.
+A reference frame is a vector space 
+
+Mechanical quantities
+=====================
+   
+In the simplest form of classical mechanics we can consider point particles which have a :physics:ref:`Mass`, but no  physical extent, or where their physical extent is negligable compared to the scale of motion.
+
+The position, :math:`\vec{x}` of a particle is a vector from the origin of the reference frame to the particle.
+
+.. physics:quantity:: Position
+   :dimensions: L
+   :symbol: :math:\vec{x}
+
+   The location of an object is the radius vector of an object in a specified frame of reference.
+
+
 Instantaneously such particles are described by two quantities; their :physics:ref:`Position`, and their :physics:ref:`Mass`.
 
 .. physics:quantity:: Mass
@@ -16,13 +39,6 @@ Instantaneously such particles are described by two quantities; their :physics:r
    :symbol: m
 
    Mass is a quantity which measures an object's resistance to acceleration.
-
-.. physics:quantity:: Position
-   :dimensions: L
-   :symbol: :math:\vec{x}
-
-   The location of an object is the coordinate of an object in a specified coordinate system.
-
 
 The position of a particle can change over time.
 In Newtonian mechanics time is assumed to be *absolute*, and the geometry of space is therefore *Euclidean*. 
@@ -35,18 +51,49 @@ The time derivatives of the position are also named quantities.
 
    .. math:: \vec{v} = \ddt{\vec{x}}
 
-   ..
-      :x: Position
-      :t: Time
-      :v: Velocity
+Specifying the mass, position and the velocity of a system completely defines its mechanical state, which is an important consideration in other formulations of mechanics.
 
+	  
 .. physics:quantity:: Acceleration
    :dimensions: L, T^{-2}
 
    The rate of change of velocity with respect to time.
 
-   .. math:: \vec{a} = \ddd{\vec{x}}{t}{2}
+   .. math:: \vec{a} = \dddf{\vec{x}}{t}{2}
 
+
+Galilean relativity and inertial frames
+=======================================
+
+It is always possible to choose a frame of reference for a particle which is "co-moving" with the particle.
+Such a reference frame is described as *inertial*, since within that reference frame the particle does not appear to move.
+Newton's first law (the law of inertia) is a description of the existence of such a reference frame.
+
+The *Galilean principle of relativity* states that in all possible inertial frames the laws of mechanics will be the same.
+
+Given a particle which has position :math:`\vec{x}` in one reference frame :math:`K`, it will have a position
+
+.. math:: \vec{x}' = x + Vt
+
+in a frame :math:`K'` which is moving with a velocity :math:`V` relative to :math:`K` at a time :math:`t`.
+Importantly, in Galilean relativity it is assumed that the time will be **the same** in both frames.
+This assumption is relaxed in Einstein's Special Relativity.
+
+
+Now, consider a particle with mass :math:`m`. Observers in :math:`R` and
+:math:`R^{\prime}` see
+
++----------------+------------------------------+---------------------------------+
+|                | :math:`R`                    | :math:`R^{\prime}`              |
++================+==============================+=================================+
+| Position       | :math:`\vec{x}`              | :math:`\vec{x}'`                |
++----------------+------------------------------+---------------------------------+
+| Velocity       | :math:`\ddf{\vec{x}}{t}`     | :math:`\ddf{\vec{x}'}{t}`       |
++----------------+------------------------------+---------------------------------+
+| Acceleration   | :math:`\dddf{\vec{x}}{t}{2}` | :math:`\dddf{\vec{x}'}{t}{2}`   |
++----------------+------------------------------+---------------------------------+
+
+We can see from this that the acceleration term is the same in both frames, as we'd expect from the assertion that the laws of physics look the same in all inertial frames.
 
 Force
 =====

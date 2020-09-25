@@ -1,3 +1,7 @@
+*************************
+The Hamiltonian Formalism
+*************************
+
 In the Lagrangian formalism the equations of motion are given by
 
 .. math::

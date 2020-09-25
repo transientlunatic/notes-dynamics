@@ -16,15 +16,15 @@ Classical Mechanics
 .. include::  dyn-intro.rst
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Classical Mechanics
 
    newtonian
-	     
    dyn-rotating
    dyn-system
    dyn-lagrange
-   dyn-oscillating
+   conservation-laws
+   dyn-oscillations
    dyn-fields
    dyn-hamilton
 
