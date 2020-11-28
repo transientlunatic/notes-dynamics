@@ -2,18 +2,18 @@
 Newtonian Mechanics
 *******************
 
-.. math::
-   \def\dd#1{\,\text{d}}
-   \def\ddt#1{\frac{\text{d} #1}{\text{d}t}}
-   \def\df#1{\frac{\text{d}}{\text{d} #1}}
-   \def\ddf#1#2{\frac{\text{d} #1}{\text{d} #2}}
-   \def\dddf#1#2#3{\frac{\text{d}^{#3} #1}{\text{d} #2^{#3}}}
-   \def\cp{\times}
+.. include:: macros.rst
+
 
 Reference frames
 ================
 
 In order to describe the mechanical behaviour of a system it is necessary to define a *reference frame* in which the behaviour, and the laws which govern it, are defined.
+
+.. sidebar:: Reference frames
+
+   You'll also come across reference frames being called "coordinate systems" and "local frames" in other contexts.
+   The reason for this will become more obvious in discussions of :ref:`special-relativity`.
 
 In different reference frames the laws describing the system may look different.
 A reference frame is a vector space 
@@ -23,11 +23,11 @@ Mechanical quantities
    
 In the simplest form of classical mechanics we can consider point particles which have a :physics:ref:`Mass`, but no  physical extent, or where their physical extent is negligable compared to the scale of motion.
 
-The position, :math:`\vec{x}` of a particle is a vector from the origin of the reference frame to the particle.
+The position, :math:`\CMposition{}` of a particle is a vector from the origin of the reference frame to the particle.
 
 .. physics:quantity:: Position
    :dimensions: L
-   :symbol: :math:\vec{x}
+   :symbol: :math:\CMposition{}
 
    The location of an object is the radius vector of an object in a specified frame of reference.
 
@@ -49,7 +49,7 @@ The time derivatives of the position are also named quantities.
 
    The rate of change of position with respect to time.
 
-   .. math:: \vec{v} = \ddt{\vec{x}}
+   .. math:: \vec{v} = \CMvelocity{}
 
 Specifying the mass, position and the velocity of a system completely defines its mechanical state, which is an important consideration in other formulations of mechanics.
 
@@ -59,13 +59,13 @@ Specifying the mass, position and the velocity of a system completely defines it
 
    The rate of change of velocity with respect to time.
 
-   .. math:: \vec{a} = \dddf{\vec{x}}{t}{2}
+   .. math:: \vec{a} = \CMacceleration{}
 
 
 Galilean relativity and inertial frames
 =======================================
 
-It is always possible to choose a frame of reference for a particle which is "co-moving" with the particle.
+In the absence of acceleration it is always possible to choose a frame of reference for a particle which is "co-moving" with the particle.
 Such a reference frame is described as *inertial*, since within that reference frame the particle does not appear to move.
 Newton's first law (the law of inertia) is a description of the existence of such a reference frame.
 
@@ -86,7 +86,7 @@ Now, consider a particle with mass :math:`m`. Observers in :math:`R` and
 +----------------+------------------------------+---------------------------------+
 |                | :math:`R`                    | :math:`R^{\prime}`              |
 +================+==============================+=================================+
-| Position       | :math:`\vec{x}`              | :math:`\vec{x}'`                |
+| Position       | :math:`\CMposition[x]`       | :math:`\CMposition[x']`         |
 +----------------+------------------------------+---------------------------------+
 | Velocity       | :math:`\ddf{\vec{x}}{t}`     | :math:`\ddf{\vec{x}'}{t}`       |
 +----------------+------------------------------+---------------------------------+

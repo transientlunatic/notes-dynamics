@@ -15,6 +15,9 @@ Classical Mechanics
 
 .. include::  dyn-intro.rst
 
+Table of Contents
+-----------------
+	      
 .. toctree::
    :maxdepth: 2
    :caption: Classical Mechanics

@@ -34,7 +34,7 @@ release = 'v0.1'
 # ones.
 extensions = ['sphinx.ext.imgconverter',
               'sphinxcontrib.bibtex',
-              #'sphinxcontrib.tikz',
+              'sphinxcontrib.tikz',
               #'sphinxcontrib.thm']
               ]
 
@@ -69,11 +69,11 @@ html_static_path = ['_static']
 mathjax_path = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 mathjax_config = {
     "loader": {
-        "load": ['[tex]/physics', '[siunitx]/siunitx.js'],
+        "load": ['[tex]/physics', '[siunitx]/siunitx.js', '[tex]/color'],
         "paths": {'siunitx': 'http://rawgit.com/burnpanck/MathJax-siunitx/master/'}
     },
     "tex": {
-        "packages": {'[+]': ['physics', 'siuntix']},
+        "packages": {'[+]': ['physics', 'siuntix', 'color']},
         "macros": {
             "div": r"\nabla",
             "ld": [r"\unicode{xA3}_{#1}{#2}", 2],
@@ -87,8 +87,7 @@ mathjax_config = {
             }                       
         }                           
     }                               
-
-
+  
 latex_elements = {
  'preamble': r'''
      % make phantomsection empty inside figures

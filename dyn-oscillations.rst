@@ -2,8 +2,18 @@
 Oscillatory motion
 ******************
 
+.. include:: macros.rst
+	     
+In order to motivate a more general solution to systems which involve oscillatory motion, first consider the *double pendulum* in which a mass is suspended on a chain of two conjoined pendula.
+	     
 The Double Pendulum
 ===================
+
+.. tikz:: A double pendulum.
+
+   \draw (0,0) circle (0.1);
+   \draw (0,0) -- (0,-1);
+   \draw (0,-1) -- (1,-2);
 
 Consider a double pendulum, consisting of two bobs, one hung below the
 other. Each has length :math:`a`, and bobs of mass :math:`m`, so the
@@ -11,39 +21,33 @@ potential energy is
 
 .. math::
 
-   \label{eq:36}
-     V = -mga \cos(\theta) - mga \qty( \cos(\theta) + \cos(\phi) )
+     \PHenergy[V] = -\CMmass \CMg \CMdistance[a] \cos(\theta) - \CMmass  \CMg \CMdistance[a] \left( \cos(\theta) + \cos(\phi) \right)
 
- and the kinetic energy is
+and the kinetic energy is
 
 .. math::
 
-   \label{eq:36}
-     T = \half m a^2 \dot{\theta}^2 + \half ma^2 (\dot{\theta} + \dot{\phi})^2
+     \PHenergy[T] = \half \CMmass a^2 \ddt{\theta}^2 + \half \CMmass a^2 \left( \ddt{\theta} + \ddt{\phi} \right)^2
 
- Then,
+Then,
+
+.. math::
+   
+   \begin{aligned}
+     L & = \half \CMmass a^2 \dot{\theta}^2 + \half \CMmass a^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi})  + \CMmass \CMg \CMdistance[a] (2 \cos(\theta) + \cos(\phi) ) \\
+   &\approx \half \CMmass \CMdistance[a]^2 \dot{\theta}^2 + \half \CMmass \CMdistance[a]^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi}) - \CMmass \CMg \CMdistance[a] \left(\theta^2 + \half \phi^2 \right)
+   \end{aligned}
+
+The equations of motion from the Lagrange equations are
 
 .. math::
 
    \begin{aligned}
-     L & = \half ma^2 \dot{\theta}^2 + \half ma^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi}) \\
-       &                          \qquad  + mga (2 \cos(\theta) + \cos(\phi) ) \\
-   &\approx \half m a^2 \dot{\theta}^2 + \half m a^2 (\dot{\theta}^2 + \dot{\phi}^2 + 2 \dot{\theta} \dot{\phi}) \\
-   & \qquad - mga \qty(\theta^2 + \half \phi^2 )\end{aligned}
-
- The equations of motion from the Lagrange equations are
-
-.. math::
-
-   \begin{aligned}
-       \label{eq:36}
-   2 \ddot{\theta} + \ddot{\phi} + \frac{2g}{a} \theta & =0 \\
-   \ddot{\theta} + \ddot{\phi} + \frac{g}{a} \phi &= 0
+   2 \ddot{\theta} + \ddot{\phi} + \frac{2 \CMg}{a} \theta & =0 \\
+   \ddot{\theta} + \ddot{\phi} + \frac{\CMg}{a} \phi &= 0
      \end{aligned}
 
-Each of these equations has a form comparable to that of a harmonic
-oscillator, :math:`\ddot{x} + \omega^2 x = 0`; attempting a trial
-solution
+Each of these equations has a form comparable to that of a harmonic oscillator, :math:`\ddot{x} + \omega^2 x = 0`; attempting a trial solution
 
 .. math::
 
@@ -55,11 +59,11 @@ solution
      c_{\theta} e^{i \omega t} \\ c_{\phi} e^{i \omega t}
    \end{bmatrix}
 
- For :math:`c_{\theta}`, :math:`c_{\phi}` complex constants, then
+For :math:`c_{\theta}`, :math:`c_{\phi}` complex constants, then
 
 .. math:: \ddot{\theta} = - \omega^2 \theta, \qquad \ddot{\phi} = - \omega^2 \phi
 
- So
+So
 
 .. math::
 
@@ -91,16 +95,14 @@ This implies that the determinant of the matrix must be zero, so
        2 \frac{g}{a} - 2 \omega^2 & - \omega^2 \\ - \omega^2 & \frac{g}{a} - \omega^2
      \end{vmatrix} = 2 \qty( \frac{g}{a} - \omega^2 )^2 - \omega^4 = 0
 
- This has two solutions,
+This has two solutions,
 
 .. math::
 
    \label{eq:41}
      \omega^2 = \frac{g}{a} ( 2 \pm \sqrt{2})
 
- which are the normal frequencies for the system, and the coordinates
-:math:`c_i` are the normal modes. To find these we substitute the normal
-frequencies into equation ,
+which are the normal frequencies for the system, and the coordinates :math:`c_i` are the normal modes. To find these we substitute the normal frequencies into equation,
 
 .. math::
 
@@ -113,31 +115,29 @@ frequencies into equation ,
        c_{\theta} \\ c_{\phi} 
      \end{bmatrix} = 0
 
- These turn out to give two copies of the same equation relating the
-coefficients, so clearly only the relative relation of them is fixed,
+These turn out to give two copies of the same equation relating the coefficients, so clearly only the relative relation of them is fixed,
 
 .. math::
 
    \label{eq:43}
      \frac{c_{\theta}}{c_{\phi}} = - \frac{2 + \sqrt{2}}{2(1+\sqrt{2})} = - \frac{(2+\sqrt{2})(1-\sqrt{2})}{2(1+\sqrt{2})(1-\sqrt{2})} = -\frac{1}{\sqrt{2}}
 
- Thus
+Thus
 
 .. math::
 
-   \label{eq:44}
-       \begin{bmatrix}
-       c_{\theta} \\ c_{\phi} 
-     \end{bmatrix} \propto
-     \begin{bmatrix}
-       -1 \\ \sqrt{2}
-     \end{bmatrix}
+   \begin{bmatrix}
+   c_{\theta} \\ c_{\phi} 
+   \end{bmatrix} \propto
+   \begin{bmatrix}
+   -1 \\ \sqrt{2}
+   \end{bmatrix}
 
- and using the negative solution
+and using the negative solution
 
 .. math::
 
-   \label{eq:45}
+
        \begin{bmatrix}
        c_{\theta} \\ c_{\phi} 
      \end{bmatrix} \propto
@@ -145,15 +145,14 @@ coefficients, so clearly only the relative relation of them is fixed,
        1 \\ \sqrt{2}
      \end{bmatrix}
 
- Giving a general solution
+Giving a general solution
 
 .. math::
 
-   \label{eq:45}
      \begin{bmatrix} \theta \\ \phi \end{bmatrix}
    = \alpha_1 \begin{bmatrix}  -1 \\ \sqrt{2}  \end{bmatrix} e^{i \omega_1 t} + \alpha_2 \begin{bmatrix}  1 \\ \sqrt{2}  \end{bmatrix} e^{i \omega_2 t}
 
- This can be rewritten in matrix form too,
+This can be rewritten in matrix form too,
 
 .. math::
 
@@ -162,7 +161,7 @@ coefficients, so clearly only the relative relation of them is fixed,
        \begin{bmatrix} - 1 & 1 \\ \sqrt{2} & \sqrt{2} \end{bmatrix}
        \begin{bmatrix} \alpha_1 e^{i \omega_1 t} \\ \alpha_2 e^{i \omega_2 t}    \end{bmatrix}
 
- This can be inverted, giving
+This can be inverted, giving
 
 .. math::
 
@@ -172,7 +171,7 @@ coefficients, so clearly only the relative relation of them is fixed,
        \begin{bmatrix} \theta \\ \phi \end{bmatrix} =
        \begin{bmatrix} \xi_1 \\ \xi_2 \end{bmatrix}
 
- For :math:`\xi_i` the *normal coordinates* of the system, these cause
+For :math:`\xi_i` the *normal coordinates* of the system, these cause
 the Lagrange equations to completely decouple.
 
 General Theory of Small Oscillations
