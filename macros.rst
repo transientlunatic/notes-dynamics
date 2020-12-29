@@ -2,6 +2,7 @@
    % UTILITIES %
    \newcommand{\half}{\frac{1}{2}}%
    \renewcommand{\vec}[1]{\mathbf{#1}}%
+   \newcommand{\mat}[1]{\mathbf{\mathsf{#1}}}%
    \newcommand{\vdot}[2]{{#1}\cdot{#2}}% Vector dot product
    \def\dd#1{\,\text{d}#1}%
    \def\ddt#1{\frac{\text{d} #1}{\text{d}t}}%
@@ -25,6 +26,11 @@
    \newcommand{\CMposition}[1][x]{\vec{#1}}%
    \newcommand{\CMvelocity}[1][x]{\ddt{\CMposition[#1]}}%
    \newcommand{\CMacceleration}[1][x]{\dddf{\CMposition[#1]}{t}{2}}%
+   \newcommand{\CMmomentum}[1][p]{\vec{#1}}%
+   \newcommand{\CMforce}[1][F]{\vec{#1}}%
+   \newcommand{\CMtime}[1][t]{#1}%
+   \newcommand{\CMenergy}[1][E]{#1}%
+   \newcommand{\CMpower}[1][P]{#1}%
    % MASS-LIKE %
    \newcommand{\CMmass}[1][m]{\PHmass[m]}%
    % PHYSICAL CONSTANTS %

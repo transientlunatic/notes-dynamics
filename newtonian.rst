@@ -74,47 +74,81 @@ Such a reference frame is described as *inertial*, since within that reference f
 
 Newton's first law (the law of inertia) is a description of the existence of such a reference frame.
 
+
+
 The *Galilean principle of relativity* states that in all possible inertial frames the laws of mechanics will be the same.
 
-Given a particle which has position :math:`\vec{x}` in one reference frame :math:`K`, it will have a position
 
-.. math:: \vec{x}' = x + Vt
+Inertial reference frames are not unique, and indeed there are transformations which map between reference frames.
+Galilean transformations constitute *translations*, *rotations*, and *boosts* (uniform motions) between frames:
 
-in a frame :math:`K'` which is moving with a velocity :math:`V` relative to :math:`K` at a time :math:`t`.
-Importantly, in Galilean relativity it is assumed that the time will be **the same** in both frames.
-This assumption is relaxed in Einstein's Special Relativity.
+There are three spatial translations, :math:`\CMposition \to \vec{a} \CMposition` for some vector :math:`\vec{a} \in \mathbb{R}^3`,
+and also one temporal translation :math:`\CMtime \to s \CMtime` for a real number :math:`c \in \mathbb{R}`.
 
+There are three spatial rotations, :math:`\CMposition \to \mat{G} \CMposition` for an orthogonal matrix transformation :math:`\mat{G}:\mathbb{R^3} \to \mathbb{R}^3`.
 
-Now, consider a particle with mass :math:`m`. Observers in :math:`R` and
-:math:`R^{\prime}` see
+The boost transformations all involve a velocity: :math:`\CMposition \to \CMposition + v \CMtime` for a uniform velocity :math:`\vec{v}`
 
-+----------------+------------------------------+---------------------------------+
-|                | :math:`R`                    | :math:`R^{\prime}`              |
-+================+==============================+=================================+
-| Position       | :math:`\CMposition[x]`       | :math:`\CMposition[x']`         |
-+----------------+------------------------------+---------------------------------+
-| Velocity       | :math:`\ddf{\vec{x}}{t}`     | :math:`\ddf{\vec{x}'}{t}`       |
-+----------------+------------------------------+---------------------------------+
-| Acceleration   | :math:`\dddf{\vec{x}}{t}{2}` | :math:`\dddf{\vec{x}'}{t}{2}`   |
-+----------------+------------------------------+---------------------------------+
+There are a total of ten Galilean transformations, giving a ten dimensional Lie algebra.
+The composition of two Galilean transformations is also a Galilean transformation, and so an eleventh transformation can be formed from the composition.
 
-We can see from this that the acceleration term is the same in both frames, as we'd expect from the assertion that the laws of physics look the same in all inertial frames.
+The set of all Galilean transformations under composition forms the Galilean group.
+
 
 Force
 =====
 
+The aim of classical mechanics is to predict the position of a particle at some point in the future knowing its mechanical properties.
+
+An important quantity is the *momentum* of the particle, which is defined simply as the product of its mass, :math:`\CMmass` and velocity, :math:`\CMvelocity`:
+
 .. physics:quantity:: Momentum
    :dimensions: M, L, T^-1
+   :symbol: \CMmomentum
+	    
+   .. math:: \CMmomentum = \CMmass \CMvelocity
 
+Newton's second law allows the equation of motion to be determined from its momentum and the force :math:`\CMforce` on the particle.
+	    
 .. physics:quantity:: Force
    :dimensions: M, L, T^-2
+   :symbol: \CMforce
+
+   .. math:: \CMforce = \ddt{\CMmomentum} = \CMmass \CMacceleration
+		
 
 
 Energy
 ======
 
-.. physics:quantity:: Energy
-   :dimensions: M, L^2, T^-2
+It is useful in mechanics toi be able to identify conserved quantities, and an important example of such a quantity is the energy of the system.
 
+In Newtonian mechanics we can arrive at the notion of energy via *work*, which is the integral of a force over the distance, :math:`s` for which it is applied along a path :math:`S`, that is
+
+.. physics:quantity:: Work
+   :dimensions: M, L^2, T^-2
+   :symbol: \CMenergy[W]
+	    
+   .. math:: \CMenergy[W] = \int_S F \cdot \dd{s}
+
+The *kinetic energy* of a particle is the energy due to its own motion, and is defined as
+
+.. physics:quantity:: Kinetic Energy
+   :dimensions: M, L^2, T^-2
+   :symbol: \CMenergy[T]
+
+   .. math:: \CMenergy[T] = \frac{1}{2} \CMmass \CMvelocity^2
+
+Whereas its *potential energy* is the energy which a particle has as a result of some force acting upon it (and corresponds to the kinetic energy which would be gained by the particle were the force to act upon it.
+
+.. physics:quantity:: Potential Energy
+   :dimensions: M, L^2, T^-2
+   :symbol: \CMenergy[V]
+
+The rate at which a particle's energy changes is the *power* applied to that particle.
+	    
 .. physics:quantity:: Power
    :dimensions: M, L^2, T^-3
+   :symbol: \CMpower
+
+   .. math:: \CMpower = \ddt{\CMenergy}
