@@ -27,7 +27,7 @@ The position, :math:`\CMposition{}` of a particle is a vector from the origin of
 
 .. physics:quantity:: Position
    :dimensions: L
-   :symbol: :math:\CMposition{}
+   :symbol: \CMposition
 
    The location of an object is the radius vector of an object in a specified frame of reference.
 
@@ -36,7 +36,7 @@ Instantaneously such particles are described by two quantities; their :physics:r
 
 .. physics:quantity:: Mass
    :dimensions: M
-   :symbol: m
+   :symbol: \CMmass
 
    Mass is a quantity which measures an object's resistance to acceleration.
 
@@ -46,16 +46,18 @@ The time derivatives of the position are also named quantities.
 
 .. physics:quantity:: Velocity
    :dimensions: L, T^{-1}
+   :symbol: \PHvelocity
 
    The rate of change of position with respect to time.
 
-   .. math:: \vec{v} = \CMvelocity{}
+   .. math:: \vec{v} = \CMvelocity
 
 Specifying the mass, position and the velocity of a system completely defines its mechanical state, which is an important consideration in other formulations of mechanics.
 
 	  
 .. physics:quantity:: Acceleration
    :dimensions: L, T^{-2}
+   :symbol: \PHacceleration
 
    The rate of change of velocity with respect to time.
 
