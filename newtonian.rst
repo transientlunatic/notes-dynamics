@@ -66,7 +66,10 @@ Galilean relativity and inertial frames
 =======================================
 
 In the absence of acceleration it is always possible to choose a frame of reference for a particle which is "co-moving" with the particle.
-Such a reference frame is described as *inertial*, since within that reference frame the particle does not appear to move.
+Such a reference frame is described as *inertial*, since within that reference frame the particle will appear to move in a straight line, such that
+
+.. math:: \CMposition[x](t) = \CMposition[x](t_0) + \CMvelocity t
+
 Newton's first law (the law of inertia) is a description of the existence of such a reference frame.
 
 The *Galilean principle of relativity* states that in all possible inertial frames the laws of mechanics will be the same.
